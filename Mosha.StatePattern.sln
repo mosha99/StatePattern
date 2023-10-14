@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mosha.StatePattern", "Mosha.StatePattern\Mosha.StatePattern.csproj", "{6FDB92C9-6EEE-4C08-987A-CF9B24E57D8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mosha.StatePatter.Test", "Mosha.StatePatter.Test\Mosha.StatePatter.Test.csproj", "{D221FF0D-3317-459F-A781-5F60E3237216}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FDB92C9-6EEE-4C08-987A-CF9B24E57D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FDB92C9-6EEE-4C08-987A-CF9B24E57D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FDB92C9-6EEE-4C08-987A-CF9B24E57D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FDB92C9-6EEE-4C08-987A-CF9B24E57D8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D221FF0D-3317-459F-A781-5F60E3237216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D221FF0D-3317-459F-A781-5F60E3237216}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D221FF0D-3317-459F-A781-5F60E3237216}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D221FF0D-3317-459F-A781-5F60E3237216}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {095A87CB-E14F-462B-AD81-E169FFAB0F1A}
+	EndGlobalSection
+EndGlobal
