@@ -15,6 +15,10 @@ namespace Mosha.StatePatter.Test.Db;
 public class MyContext : DbContext
 {
     public DbSet<Deal> Deals { get; set; }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlite(@"DataSource=products.db");
+    }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Deal>().OwnsOne(x=>x.State);
