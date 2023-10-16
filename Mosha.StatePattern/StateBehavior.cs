@@ -10,13 +10,19 @@ public class StateBehavior<TBaseStateType, TKey, TRule>
     {
         StateKey = default;
     }
+
     public StateBehavior(TBaseStateType state)
     {
         CreateRule();
         StateKey = rule.GetKey(state.GetType());
     }
-    public TKey? StateKey { get; private set; }
 
+    public StateBehavior(TKey key)
+    {
+        StateKey = key;
+    }
+
+    public TKey? StateKey { get; private set; }
     private TRule? rule = null;
 
     [NotMapped]

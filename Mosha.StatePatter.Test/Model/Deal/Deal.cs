@@ -10,7 +10,36 @@ public class Deal
 {
     public int Id { get; set; }
     public string DealerName { get; set; }
+    public string StateString => State.StateKey.ToString();
 
     public StateBehavior<IDealState, DealStateEnum, DealStateRule> State =
         new StateBehavior<IDealState, DealStateEnum, DealStateRule>();
+
+    public void Confirm()
+    {
+        if (State.state.CanConfirem(this) != true)
+        {
+            Console.WriteLine($"Deal With Id {Id} Can Not Confirmed");
+            return;
+        }
+
+        //Do Some Things
+        Console.WriteLine($"Deal With Id {Id} Confirmed");
+        State = new(DealStateEnum.Confirmed);
+    }
+
+    public void Revoke()
+    {
+        if (State.state.CanRevoked(this))
+        {
+            Console.WriteLine($"Deal With Id {Id} Can Not Revoked");
+            return;
+        }
+
+        //Do Some Things
+        Console.WriteLine($"Deal With Id {Id} Revoked");
+        State = new(DealStateEnum.Revoked);
+
+    }
+
 }

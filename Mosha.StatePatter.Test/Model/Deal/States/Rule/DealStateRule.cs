@@ -8,7 +8,10 @@ public class DealStateRule : StateRule<DealStateEnum>
     public DealStateRule()
     {
         AddRule<DealAdedd>(DealStateEnum.Added);
+
         AddRule<DealConfirmed>(DealStateEnum.Confirmed);
+
         AddRule<DealRevoked>(DealStateEnum.Revoked);
+
     }
 }

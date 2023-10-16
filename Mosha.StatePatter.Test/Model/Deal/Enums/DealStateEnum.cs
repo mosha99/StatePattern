@@ -4,5 +4,5 @@ public enum DealStateEnum
 {
     Added = 0,
     Confirmed = 1,
-    Revoked = 1,
+    Revoked = 2,
 }

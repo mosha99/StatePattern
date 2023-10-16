@@ -1,27 +1,38 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Microsoft.EntityFrameworkCore;
+﻿
+
+
+using System.Text.Json;
 using Mosha.StatePatter.Test.Db;
+using Mosha.StatePatter.Test.Model.Deal;
 
-Console.WriteLine("Hello, World!");
-var context = new MyContext();
-context.Database.EnsureDeleted();
-context.Database.EnsureCreated();
+MyContext DB = new();
 
-var p = context.Deals.ToList();
-Console.WriteLine(p.Count);
+await DB.Database.EnsureCreatedAsync();
 
-for (int i = 0; i < 10; i++)
+if (!DB.Deals.Any())
 {
-    context.Deals.Add(new Mosha.StatePatter.Test.Model.Deal.Deal()
+    await DB.AddAsync(new Deal()
     {
-        DealerName = "Deal "+i.ToString(),
-        State = default,
+        DealerName = "Moein",
     });
+
+    await DB.SaveChangesAsync();
 }
 
-context.SaveChanges();
-Console.WriteLine("************************");
-var p2 = context.Deals.ToList();
-Console.WriteLine(p.Count);
-Console.WriteLine("************************");
-Console.ReadKey();
+Deal deal = DB.Deals.First();
+
+Print(deal);
+
+deal.Confirm();
+
+await DB.SaveChangesAsync();
+
+deal = DB.Deals.First();
+
+Print(deal);
+
+
+void Print(object item)
+{
+    Console.WriteLine(JsonSerializer.Serialize(item, new JsonSerializerOptions() { WriteIndented = true }));
+}
