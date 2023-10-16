@@ -2,7 +2,7 @@
 
 namespace Mosha.StatePatter.Test.Model.Deal.States;
 
-public class DealConfirmed : IDealState
+public class DealAdded : IDealState
 {
-    public bool CanRevoked(Deal deal) => true;
+    public bool CanConfirm(Deal deal) => true;
 }

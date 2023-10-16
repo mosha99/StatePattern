@@ -1,6 +1,8 @@
-﻿namespace Mosha.StatePatter.Test.Model.Deal.States;
+﻿using Mosha.StatePatter.Test.Model.Deal.States.Interface;
 
-public class DealRevoked : DealState
+namespace Mosha.StatePatter.Test.Model.Deal.States;
+
+public class DealRevoked : IDealState
 {
 
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Mosha.StatePatter.Test.Model.Deal.Enums;
+using Mosha.StatePatter.Test.Model.Deal.States;
 using Mosha.StatePatter.Test.Model.Deal.States.Interface;
 using Mosha.StatePatter.Test.Model.Deal.States.Rule;
 using Mosha.StatePattern;
@@ -12,12 +13,11 @@ public class Deal
     public string DealerName { get; set; }
     public string StateString => State.StateKey.ToString();
 
-    public StateBehavior<IDealState, DealStateEnum, DealStateRule> State =
-        new StateBehavior<IDealState, DealStateEnum, DealStateRule>();
+    public StateBehavior<IDealState, DealStateEnum, DealStateRule> State = new(DealStateEnum.Added);
 
     public void Confirm()
     {
-        if (State.state.CanConfirem(this) != true)
+        if (State.state.CanConfirm(this) != true)
         {
             Console.WriteLine($"Deal With Id {Id} Can Not Confirmed");
             return;
@@ -38,7 +38,7 @@ public class Deal
 
         //Do Some Things
         Console.WriteLine($"Deal With Id {Id} Revoked");
-        State = new(DealStateEnum.Revoked);
+        State = new(new DealRevoked());
 
     }
 

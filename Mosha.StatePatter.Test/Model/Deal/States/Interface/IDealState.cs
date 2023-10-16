@@ -2,6 +2,6 @@
 
 public interface IDealState
 {
-    public bool CanConfirem(Deal deal);
-    public bool CanRevoked(Deal deal);
+    public bool CanConfirem(Deal deal) => false;
+    public bool CanRevoked(Deal deal) => false;
 }
