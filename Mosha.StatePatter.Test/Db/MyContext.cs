@@ -17,7 +17,7 @@ public class MyContext : DbContext
     public DbSet<Deal> Deals { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Deal>().OwnsOne<StateBehavior<IDealState, DealStateEnum, DealStateRule>>("State");
+        modelBuilder.Entity<Deal>().OwnsOne(x=>x.State);
         base.OnModelCreating(modelBuilder);
     }
 }
