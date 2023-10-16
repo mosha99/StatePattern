@@ -2,31 +2,41 @@
 
 namespace Mosha.StatePattern;
 
-public class StateBehavior<TBaseStateType, TKey, TRule> 
+public class StateBehavior<TBaseStateType, TKey, TRule>
     where TBaseStateType : class
     where TRule : StateRule<TKey>, new()
 {
     public StateBehavior()
     {
-        this.rule = Activator.CreateInstance<TRule>();
         StateKey = default;
     }
+    public StateBehavior(TBaseStateType state)
+    {
+        CreateRule();
+        StateKey = rule.GetKey(state.GetType());
+    }
+    public TKey? StateKey { get; private set; }
 
-    public TKey StateKey { get; private set; }
-
-    private TRule rule;
+    private TRule? rule = null;
 
     [NotMapped]
     public TBaseStateType state => GetState();
 
     public TBaseStateType GetState()
     {
+        CreateRule();
+
         TBaseStateType state = rule.GetState<TBaseStateType>(StateKey);
+
         return state;
     }
 
-    public void SetKey(TBaseStateType state)
+    private void CreateRule()
     {
-        StateKey = rule.GetKey(state.GetType());
+        if (rule is null)
+            this.rule = Activator.CreateInstance<TRule>();
+
+        if (rule is null)
+            throw new Exception("Can not Create Rule For State");
     }
 }
