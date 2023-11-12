@@ -1,4 +1,6 @@
-﻿namespace Mosha.StatePattern.Test.Unit.Models;
+﻿using Mosha.StatePattern.Test.Models.Models;
+
+namespace Mosha.StatePattern.Test.Models.States;
 
 public class GoToHighSchoolState : IPersonState
 {

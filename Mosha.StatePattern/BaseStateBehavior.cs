@@ -2,17 +2,18 @@
 
 namespace Mosha.StatePattern;
 
-public class StateBehavior<TBaseStateType, TKey, TRule>
+
+public class BaseStateBehavior<TBaseStateType, TKey, TRule> : KeyBehavior<TKey>
     where TKey : notnull
     where TBaseStateType : class
     where TRule : StateRule<TKey>, new()
 {
-    public StateBehavior()
+    public BaseStateBehavior()
     {
         StateKey = default;
     }
 
-    public StateBehavior(TBaseStateType state)
+    public BaseStateBehavior(TBaseStateType state)
     {
         CreateRule();
 
@@ -20,12 +21,11 @@ public class StateBehavior<TBaseStateType, TKey, TRule>
             StateKey = _rule.GetKey(state.GetType());
     }
 
-    public StateBehavior(TKey key)
+    public BaseStateBehavior(TKey key)
     {
         StateKey = key;
     }
 
-    public TKey? StateKey { get; private set; }
 
     private TRule? _rule = null;
 

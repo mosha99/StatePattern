@@ -1,4 +1,6 @@
-﻿namespace Mosha.StatePattern.Test.Unit.Models;
+﻿using Mosha.StatePattern.Test.Models.States;
+
+namespace Mosha.StatePattern.Test.Models.Models;
 
 public class Person
 {
@@ -7,7 +9,7 @@ public class Person
         BirthDate = birthDate;
         Name = name;
         Description = description;
-        PersonState = new(PersonEducationEnum.NotYetGoToSchool);
+        PersonBaseState = new(PersonEducationEnum.NotYetGoToSchool);
     }
 
     // Only For Test
@@ -16,7 +18,7 @@ public class Person
         BirthDate = birthDate;
         Name = name;
         Description = description;
-        PersonState = new(personState);
+        PersonBaseState = new(personState);
     }
 
     public int Id { get; private set; }
@@ -29,8 +31,8 @@ public class Person
 
     public int Age => (DateTime.Now.Year - BirthDate.Year);
 
-    public PersonEducationEnum State => PersonState.StateKey;
-    public StateBehavior<IPersonState, PersonEducationEnum, PersonStateRule> PersonState { get;  set; } 
+    public PersonEducationEnum State => PersonBaseState.StateKey;
+    public BaseStateBehavior<IPersonState, PersonEducationEnum, PersonStateRule> PersonBaseState { get;  set; } 
 
     public void Group(DateOnly birthDate)
     {
@@ -39,45 +41,46 @@ public class Person
 
     public void GoToSchool()
     {
-        if (!PersonState.State.CanGoToSchool(this))
+        if (!PersonBaseState.State.CanGoToSchool(this))
         {
             throw new Exception("this person can't go to School");
         }
 
-        PersonState = new(PersonEducationEnum.GoToSchool);
+        PersonBaseState = new(PersonEducationEnum.GoToSchool);
     }
     public void EndSchool()
     {
-        if (!PersonState.State.CanEndSchool(this))
+        if (!PersonBaseState.State.CanEndSchool(this))
         {
             throw new Exception("this person can't end School");
         }
-        PersonState = new(PersonEducationEnum.EndSchool);
+        PersonBaseState = new(PersonEducationEnum.EndSchool);
 
     }
     public void GoToHighSchool()
     {
-        if (!PersonState.State.CanGoToHighSchool(this))
+        if (!PersonBaseState.State.CanGoToHighSchool(this))
         {
             throw new Exception("this person can't go to High School");
         }
-        PersonState = new(PersonEducationEnum.GoToHighSchool);
+        PersonBaseState = new(PersonEducationEnum.GoToHighSchool);
     }
     public void EndHighSchool()
     {
-        if (!PersonState.State.CanEndHighSchool(this))
+        if (!PersonBaseState.State.CanEndHighSchool(this))
         {
             throw new Exception("this person can't end High School");
         }
-        PersonState = new(PersonEducationEnum.EndHighSchool);
+        PersonBaseState = new(PersonEducationEnum.EndHighSchool);
     }
     public void GoToUniversity()
     {
-        if (!PersonState.State.CanGoToUniversity(this))
+        if (!PersonBaseState.State.CanGoToUniversity(this))
         {
             throw new Exception("this person can't go to University");
         }
-        PersonState = new(PersonEducationEnum.GoToUniversity);
+        PersonBaseState = new(PersonEducationEnum.GoToUniversity);
     }
 
 }
+

@@ -1,4 +1,4 @@
-﻿namespace Mosha.StatePattern.Test.Unit.Models;
+﻿namespace Mosha.StatePattern.Test.Models.States;
 
 public enum PersonEducationEnum
 {
@@ -7,5 +7,5 @@ public enum PersonEducationEnum
     EndSchool,
     GoToHighSchool,
     EndHighSchool,
-    GoToUniversity,
+    GoToUniversity
 }

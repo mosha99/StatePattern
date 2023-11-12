@@ -1,8 +1,11 @@
-﻿using Mosha.StatePattern.Test.Unit.Models;
+﻿
+
+using Mosha.StatePattern.Test.Models.Models;
+using Mosha.StatePattern.Test.Models.States;
 
 namespace Mosha.StatePattern.Test.Unit;
 
-public class TestPersonState
+public class TestPersonStateWithOutDb
 {
     [Test]
     public void TestOfMachineState()
@@ -15,9 +18,9 @@ public class TestPersonState
         {
             person.GoToSchool();
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            Assert.Fail(e.Message);
+            Assert.Fail();
         }
         if (person.State == PersonEducationEnum.GoToSchool) Assert.Pass();
 
@@ -25,9 +28,9 @@ public class TestPersonState
         {
             person.EndSchool();
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            Assert.Fail(e.Message);
+            Assert.Fail();
         }
         if (person.State == PersonEducationEnum.EndSchool) Assert.Pass();
 
@@ -36,7 +39,7 @@ public class TestPersonState
             person.EndHighSchool();
             Assert.Fail();
         }
-        catch (Exception e)
+        catch (Exception)
         {
 
         }
@@ -55,7 +58,7 @@ public class TestPersonState
         {
             person.GoToUniversity();
         }
-        catch (Exception e)
+        catch (Exception)
         {
             Assert.Pass();
         }
